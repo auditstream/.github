@@ -26,7 +26,7 @@ Auditstream records **who** changed **what** in PostgreSQL 15–19 with full `be
 | `auditstream/auditstream-js` | ESM-only TypeScript adapters (`@auditstream/node`, `@auditstream/prisma`, `@auditstream/drizzle`) |
 | `auditstream/site` | Website and documentation ([auditstream.dev](https://auditstream.dev)) |
 
-> **Status:** v0.1 is currently in active development ahead of public release. Follow progress and read the architecture, contract, and benchmarks at **[auditstream.dev](https://auditstream.dev)**.
+> **Status:** **v0.1.0 is live!** Install the CLI via shell (`curl -LsSf https://github.com/auditstream/auditstream/releases/latest/download/auditstream-installer.sh | sh`), Homebrew (`brew install auditstream/tap/auditstream`), npm (`npm i -g auditstream`), or Docker (`ghcr.io/auditstream/auditstream:latest`), and wire TypeScript adapters with `pnpm add @auditstream/node @auditstream/prisma` (or `@auditstream/drizzle`). Read the docs and verified benchmarks at **[auditstream.dev](https://auditstream.dev)**.
 
 ---
 
