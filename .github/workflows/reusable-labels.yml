@@ -1,0 +1,36 @@
+name: Reusable Sync labels
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Sync labels from .github/labels.yml
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          yq -o=json '.' .github/labels.yml | jq -c '.[]' | while IFS= read -r item; do
+            name=$(jq -r '.name' <<< "$item")
+            color=$(jq -r '.color' <<< "$item")
+            description=$(jq -r '.description' <<< "$item")
+            gh label create "$name" \
+              --repo "$GH_REPO" \
+              --color "$color" \
+              --description "$description" \
+              --force
+          done

@@ -1,0 +1,61 @@
+name: Reusable Check PR title
+
+on:
+  workflow_call:
+    inputs:
+      scopes:
+        description: Pipe-separated list of allowed Conventional Commit scopes (empty allows any lowercase scope)
+        required: false
+        type: string
+        default: ""
+
+permissions: {}
+
+jobs:
+  pr-title:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Validate Conventional Commits title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          ALLOWED_SCOPES: ${{ inputs.scopes }}
+        run: |
+          node - <<'EOF'
+          const title = process.env.PR_TITLE || "";
+          const rawScopes = (process.env.ALLOWED_SCOPES || "").trim();
+
+          let scopeGroup = "[a-z0-9-]+";
+          if (rawScopes.length > 0) {
+            const scopes = rawScopes.split("|").map((s) => s.trim()).filter(Boolean);
+            for (const scope of scopes) {
+              if (!/^[a-z0-9-]+$/.test(scope)) {
+                console.error(`Invalid scope configuration: "${scope}"`);
+                process.exit(1);
+              }
+            }
+            scopeGroup = scopes.join("|");
+          }
+
+          const pattern = new RegExp(
+            `^(feat|fix|perf|refactor|docs|test|build|ci|chore|revert|style)(\\((${scopeGroup})\\))?!?: \\S.*$`,
+          );
+
+          if (!pattern.test(title)) {
+            console.error(`Invalid PR title: "${title}"`);
+            console.error(
+              "Expected Conventional Commits 1.0: <type>[(<scope>)][!]: <description>",
+            );
+            console.error(
+              "Allowed types: feat, fix, perf, refactor, docs, test, build, ci, chore, revert, style",
+            );
+            if (rawScopes.length > 0) {
+              console.error(`Allowed scopes (optional): ${rawScopes.split("|").join(", ")}`);
+            }
+            process.exit(1);
+          }
+
+          console.log(`PR title valid: ${title}`);
+          EOF
