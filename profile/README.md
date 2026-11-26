@@ -31,7 +31,7 @@ Auditstream records **who** changed **what** at the database level with full `be
 | :--- | :--- | :--- |
 | **PostgreSQL** | **Supported & tested** | PostgreSQL 15–19 (verified 15.20–19.0), PgBouncer 1.26, Neon, and Supabase |
 | **MySQL** | Evaluating | Not supported yet — PostgreSQL is the only engine in v0.1 |
-| **TypeScript SDK** | **Supported** | `@auditstream/*` v0.2.0 for Prisma 7, Drizzle, Next.js 16, Hono, and Express |
+| **TypeScript SDK** | **Supported** | `@auditstream/*` v0.2.1 for Prisma 7, Drizzle, Next.js 16, Hono, and Express |
 | **Python SDK** | Planned | No native SDK yet — works today via [`psycopg` and SQL comments](https://auditstream.dev/docs/python/) |
 | **Plain SQL** | **Supported** | Any language or driver (Go, Ruby, Java, `psql`) via [SQL comments or `set_config`](https://auditstream.dev/docs/plain-sql/) |
 
@@ -42,7 +42,7 @@ Auditstream records **who** changed **what** at the database level with full `be
 | Repository | Description |
 | :--- | :--- |
 | [`auditstream/auditstream`](https://github.com/auditstream/auditstream) | Rust engine & CLI (`v0.1.0`), normative `spec/` (`v0.1.1`), conformance fixtures, handbook |
-| [`auditstream/auditstream-js`](https://github.com/auditstream/auditstream-js) | TypeScript SDKs (`v0.2.0`): [`@auditstream/node`](https://www.npmjs.com/package/@auditstream/node), [`@auditstream/prisma`](https://www.npmjs.com/package/@auditstream/prisma), [`@auditstream/drizzle`](https://www.npmjs.com/package/@auditstream/drizzle) |
+| [`auditstream/auditstream-js`](https://github.com/auditstream/auditstream-js) | TypeScript SDKs (`v0.2.1`): [`@auditstream/node`](https://www.npmjs.com/package/@auditstream/node), [`@auditstream/prisma`](https://www.npmjs.com/package/@auditstream/prisma), [`@auditstream/drizzle`](https://www.npmjs.com/package/@auditstream/drizzle) |
 | [`auditstream/site`](https://github.com/auditstream/site) | Documentation & site ([auditstream.dev](https://auditstream.dev)) |
 | [`auditstream/homebrew-tap`](https://github.com/auditstream/homebrew-tap) | Official Homebrew formula (`brew install auditstream/tap/auditstream`) |
 
@@ -50,7 +50,7 @@ Auditstream records **who** changed **what** at the database level with full `be
 
 ## Quick install
 
-CLI `v0.1.0` · TypeScript SDKs `v0.2.0` · Spec `v0.1.1`
+CLI `v0.1.0` · TypeScript SDKs `v0.2.1` · Spec `v0.1.1`
 
 ```sh
 # Shell (macOS & Linux)
