@@ -5,13 +5,13 @@
 [![SonarCloud][badge-sonar]][link-sonar]
 [![MIT License][badge-license]][link-license]
 
-**Open-source database audit trail engine — written in Rust, with thin TypeScript adapters.**
+**Open-source database audit trail engine written in Rust. Zero daemons, pooler-safe actors, and tamper-resistant diffs.**
 
 Auditstream records **who** changed **what** at the database level with full `before` and `after` values, stored in a partitioned append-only history table (`auditstream.changes`) inside your own database and exported on demand using a commit-safe `xid8` cursor.
 
 **No 24/7 consumer daemon. No WAL replication slots. No new infrastructure.**
 
-`+3.2% (+5.1 µs/row)` durable PG 19 UPDATE · `2.4M` PgBouncer tx with `0` actor leaks · [Benchmarks](https://auditstream.dev/docs/evidence/)
+`+3.2% (+5.1 µs/row)` durable PostgreSQL 19 UPDATE · `2.4M` PgBouncer tx with `0` actor leaks · [Benchmarks](https://auditstream.dev/docs/evidence/)
 
 → **[auditstream.dev](https://auditstream.dev)** · **[Docs](https://auditstream.dev/docs/)** · **[Quickstart](https://auditstream.dev/docs/getting-started/)** · **[TypeScript SDK](https://auditstream.dev/docs/typescript/)** · **[Evidence](https://auditstream.dev/docs/evidence/)** · **[Spec v0.1.1](https://auditstream.dev/docs/contract/)**
 
