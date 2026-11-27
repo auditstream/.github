@@ -73,6 +73,13 @@ pnpm add @auditstream/node @auditstream/prisma
 
 ---
 
+## Community
+
+- **Questions:** [GitHub Discussions](https://github.com/auditstream/auditstream/discussions) · [SUPPORT.md](https://github.com/auditstream/auditstream/blob/main/SUPPORT.md)
+- **Chat:** [Auditstream Discord](https://auditstream.dev/discord)
+
+---
+
 ## License & Security
 
 - **License:** [MIT License](https://github.com/auditstream/auditstream/blob/main/LICENSE)
